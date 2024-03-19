@@ -16,8 +16,12 @@ class Orbits:
             "vx_a": 0,
             "vy_a": 2.530 * 10 ** (-3),  # 10**12 m/dia
             "Gm_a": 2.975 * 10 ** (-12),  # (10**12m)**3 / (dia)**2
+            # Euler
             "pos_a_x": [],
             "pos_a_y": [],
+            # RungeKutta
+            "pos_c_x": [],
+            "pos_c_y": [],
         }
 
         # Planeta marte
@@ -27,8 +31,12 @@ class Orbits:
             "vx_b": 0,
             "vy_b": 2.08 * 10 ** (-3),  # 10**12 m/dia
             "Gm_b": 3.197 * 10 ** (-14),  # (10**12m)**3 / (dia)**2
+            # Euler
             "pos_b_x": [],
             "pos_b_y": [],
+            # Rungekutta
+            "pos_d_x": [],
+            "pos_d_y": [],
         }
 
     def apply_euler_method(self, gravitational_force: Type[MethodsInterface]):

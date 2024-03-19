@@ -17,12 +17,12 @@ class Orbits_runge_kutta_method(MethodsInterface):
             vx_a0 = terra["vx_a"]
             vy_a0 = terra["vy_a"]
 
-            terra["pos_a_x"].append(terra["x_a"])
+            terra["pos_c_x"].append(terra["x_a"])
 
-            terra["pos_a_y"].append(terra["y_a"])
+            terra["pos_c_y"].append(terra["y_a"])
 
-            marte["pos_b_x"].append(marte["x_b"])
-            marte["pos_b_y"].append(marte["y_b"])
+            marte["pos_d_x"].append(marte["x_b"])
+            marte["pos_d_y"].append(marte["y_b"])
 
             div_b = (marte["x_b"] ** 2 + marte["y_b"] ** 2) ** (3 / 2)
             div_a = (terra["x_a"] ** 2 + terra["y_a"] ** 2) ** (3 / 2)
@@ -97,10 +97,10 @@ class Orbits_runge_kutta_method(MethodsInterface):
             marte["y_b"] = y_b0 + marte["vy_b"] * passo["dt_runge_kutta"]
 
         return (
-            terra["pos_a_x"],
-            terra["pos_a_y"],
-            marte["pos_b_x"],
-            marte["pos_b_y"],
+            terra["pos_c_x"],
+            terra["pos_c_y"],
+            marte["pos_d_x"],
+            marte["pos_d_y"],
         )
 
     def euler_method(self) -> None:
