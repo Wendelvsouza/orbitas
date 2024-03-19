@@ -1,7 +1,6 @@
-# import matplotlib.pyplot as plt
-
 from typing import Type
 from interfaces.methods import MethodsInterface
+from plot_orbits.plot import Plot
 
 
 class Orbits:
@@ -41,3 +40,10 @@ class Orbits:
         gravitational_force.runge_kutta_method(
             self.constante, self.passo, self.marte, self.terra
         )
+        # plot = Plot()
+
+        # plot.graph_force_grav(
+        #     gravitational_force.runge_kutta_method(
+        #         self.constante, self.passo, self.marte, self.terra
+        #     )
+        # )

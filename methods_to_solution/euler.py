@@ -47,14 +47,12 @@ class Orbits_euler_method(MethodsInterface):
             marte["x_b"] += marte["vx_b"] * passo["dt"]
             marte["y_b"] += marte["vy_b"] * passo["dt"]
 
-            euler = [
-                terra["pos_a_x"],
-                terra["pos_a_y"],
-                marte["pos_b_x"],
-                marte["pos_b_y"],
-            ]
-
-        return euler
+        return (
+            terra["pos_a_x"],
+            terra["pos_a_y"],
+            marte["pos_b_x"],
+            marte["pos_b_y"],
+        )
 
     def runge_kutta_method(self) -> list:
         pass

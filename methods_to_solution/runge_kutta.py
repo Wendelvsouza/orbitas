@@ -6,6 +6,7 @@ class Orbits_runge_kutta_method(MethodsInterface):
     def runge_kutta_method(self, constante, passo, marte, terra) -> list:
 
         for _ in range(358000):
+
             x_b0 = marte["x_b"]
             y_b0 = marte["y_b"]
             vx_b0 = marte["vx_b"]
@@ -17,6 +18,7 @@ class Orbits_runge_kutta_method(MethodsInterface):
             vy_a0 = terra["vy_a"]
 
             terra["pos_a_x"].append(terra["x_a"])
+
             terra["pos_a_y"].append(terra["y_a"])
 
             marte["pos_b_x"].append(marte["x_b"])
@@ -52,10 +54,8 @@ class Orbits_runge_kutta_method(MethodsInterface):
             marte["vx_b"] += acelera_bx * passo["dt"] / 2
             marte["vy_b"] += acelera_by * passo["dt"] / 2
 
-            print("cheguei aqui")
-
-            terra["x_a"] += self.terra["vx_a"] * passo["dt"] / 2
-            marte["x_b"] += self.marte["vx_b"] * passo["dt"] / 2
+            terra["x_a"] += terra["vx_a"] * passo["dt"] / 2
+            marte["x_b"] += marte["vx_b"] * passo["dt"] / 2
 
             terra["y_a"] += terra["vy_a"] * passo["dt"] / 2
             marte["y_b"] += marte["vy_b"] * passo["dt"] / 2
@@ -96,13 +96,13 @@ class Orbits_runge_kutta_method(MethodsInterface):
             terra["y_a"] = y_a0 + terra["vy_a"] * passo["dt"]
             marte["y_b"] = y_b0 + marte["vy_b"] * passo["dt"]
 
-            rungekutta = [
+            position_list = (
                 terra["pos_a_x"],
                 terra["pos_a_y"],
                 marte["pos_b_x"],
                 marte["pos_b_y"],
-            ]
-        return rungekutta
+            )
+        return position_list
 
     def euler_method(self) -> None:
         pass

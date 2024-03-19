@@ -1,13 +1,17 @@
-from orbits import Orbits
+import matplotlib.pyplot as plt
 
 
-class plot:
+class Plot:
 
-    def apply_method(
+    def graph_force_grav(
         self,
+        terra_x,
+        terra_y,
+        marte_x,
+        marte_y,
     ):
-        plt.plot(terra["pos_a_x"], terra["pos_a_y"], label="Terra")
-        plt.plot(marte["pos_b_x"], marte["pos_b_y"], label="Marte")
+        plt.plot(terra_x, terra_y, label="Terra")
+        plt.plot(marte_x, marte_y, label="Marte")
         plt.title("Orbita")
         plt.xlabel("Posição(x em metros)")
         plt.ylabel("Posição(y em metros)")
