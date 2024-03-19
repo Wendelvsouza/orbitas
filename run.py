@@ -5,6 +5,7 @@ from orbits import Orbits
 
 orbits = Orbits()
 
+
 orbits_euler_method = Orbits_euler_method()
 orbits.apply_euler_method(orbits_euler_method)
 
