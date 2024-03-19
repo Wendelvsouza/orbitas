@@ -7,7 +7,7 @@ class Orbits:
     def __init__(self) -> None:
         # Constante
         self.constante = {"GM": 9.96 * 10 ** (-7)}
-        self.passo = {"dt": 0.1}
+        self.passo = {"dt_euler": 0.1, "dt_runge_kutta": 0.01}
 
         # Planeta terra
         self.terra = {
@@ -32,18 +32,17 @@ class Orbits:
         }
 
     def apply_euler_method(self, gravitational_force: Type[MethodsInterface]):
-        gravitational_force.euler_method(
+        name = "euler"
+        terra_x, terra_y, marte_x, marte_y = gravitational_force.euler_method(
             self.constante, self.passo, self.marte, self.terra
         )
+        plot_euler = Plot()
+        plot_euler.graph_force_grav(name, terra_x, terra_y, marte_x, marte_y)
 
     def apply_runge_kutta_method(self, gravitational_force: Type[MethodsInterface]):
-        gravitational_force.runge_kutta_method(
+        name = "runge_kutta"
+        terra_x, terra_y, marte_x, marte_y = gravitational_force.runge_kutta_method(
             self.constante, self.passo, self.marte, self.terra
         )
-        # plot = Plot()
-
-        # plot.graph_force_grav(
-        #     gravitational_force.runge_kutta_method(
-        #         self.constante, self.passo, self.marte, self.terra
-        #     )
-        # )
+        plot_runge = Plot()
+        plot_runge.graph_force_grav(name, terra_x, terra_y, marte_x, marte_y)

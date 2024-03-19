@@ -1,4 +1,5 @@
 from interfaces.methods import MethodsInterface
+from plot_orbits.plot import Plot
 
 
 class Orbits_euler_method(MethodsInterface):
@@ -35,17 +36,17 @@ class Orbits_euler_method(MethodsInterface):
                 - marte["Gm_b"] * (marte["y_b"] - terra["y_a"]) / div_a_b
             )
 
-            terra["vx_a"] += acelera_ax * passo["dt"]
-            terra["vy_a"] += acelera_ay * passo["dt"]
+            terra["vx_a"] += acelera_ax * passo["dt_euler"]
+            terra["vy_a"] += acelera_ay * passo["dt_euler"]
 
-            marte["vx_b"] += acelera_bx * passo["dt"]
-            marte["vy_b"] += acelera_by * passo["dt"]
+            marte["vx_b"] += acelera_bx * passo["dt_euler"]
+            marte["vy_b"] += acelera_by * passo["dt_euler"]
 
-            terra["x_a"] += terra["vx_a"] * passo["dt"]
-            terra["y_a"] += terra["vy_a"] * passo["dt"]
+            terra["x_a"] += terra["vx_a"] * passo["dt_euler"]
+            terra["y_a"] += terra["vy_a"] * passo["dt_euler"]
 
-            marte["x_b"] += marte["vx_b"] * passo["dt"]
-            marte["y_b"] += marte["vy_b"] * passo["dt"]
+            marte["x_b"] += marte["vx_b"] * passo["dt_euler"]
+            marte["y_b"] += marte["vy_b"] * passo["dt_euler"]
 
         return (
             terra["pos_a_x"],

@@ -48,17 +48,17 @@ class Orbits_runge_kutta_method(MethodsInterface):
                 - marte["Gm_b"] * (marte["y_b"] - terra["y_a"]) / div_a_b
             )
 
-            terra["vx_a"] += acelera_ax * passo["dt"] / 2
-            terra["vy_a"] += acelera_ay * passo["dt"] / 2
+            terra["vx_a"] += acelera_ax * passo["dt_runge_kutta"] / 2
+            terra["vy_a"] += acelera_ay * passo["dt_runge_kutta"] / 2
 
-            marte["vx_b"] += acelera_bx * passo["dt"] / 2
-            marte["vy_b"] += acelera_by * passo["dt"] / 2
+            marte["vx_b"] += acelera_bx * passo["dt_runge_kutta"] / 2
+            marte["vy_b"] += acelera_by * passo["dt_runge_kutta"] / 2
 
-            terra["x_a"] += terra["vx_a"] * passo["dt"] / 2
-            marte["x_b"] += marte["vx_b"] * passo["dt"] / 2
+            terra["x_a"] += terra["vx_a"] * passo["dt_runge_kutta"] / 2
+            marte["x_b"] += marte["vx_b"] * passo["dt_runge_kutta"] / 2
 
-            terra["y_a"] += terra["vy_a"] * passo["dt"] / 2
-            marte["y_b"] += marte["vy_b"] * passo["dt"] / 2
+            terra["y_a"] += terra["vy_a"] * passo["dt_runge_kutta"] / 2
+            marte["y_b"] += marte["vy_b"] * passo["dt_runge_kutta"] / 2
 
             div_b = (marte["x_b"] ** 2 + marte["y_b"] ** 2) ** (3 / 2)
             div_a = (terra["x_a"] ** 2 + terra["y_a"] ** 2) ** (3 / 2)
@@ -84,25 +84,24 @@ class Orbits_runge_kutta_method(MethodsInterface):
                 - marte["Gm_b"] * (marte["y_b"] - terra["y_a"]) / div_a_b
             )
 
-            terra["vx_a"] = vx_a0 + acelera_ax * passo["dt"]
-            terra["vy_a"] = vy_a0 + acelera_ay * passo["dt"]
+            terra["vx_a"] = vx_a0 + acelera_ax * passo["dt_runge_kutta"]
+            terra["vy_a"] = vy_a0 + acelera_ay * passo["dt_runge_kutta"]
 
-            marte["vx_b"] = vx_b0 + acelera_bx * passo["dt"]
-            marte["vy_b"] = vy_b0 + acelera_by * passo["dt"]
+            marte["vx_b"] = vx_b0 + acelera_bx * passo["dt_runge_kutta"]
+            marte["vy_b"] = vy_b0 + acelera_by * passo["dt_runge_kutta"]
 
-            terra["x_a"] = x_a0 + terra["vx_a"] * passo["dt"]
-            marte["x_b"] = x_b0 + marte["vx_b"] * passo["dt"]
+            terra["x_a"] = x_a0 + terra["vx_a"] * passo["dt_runge_kutta"]
+            marte["x_b"] = x_b0 + marte["vx_b"] * passo["dt_runge_kutta"]
 
-            terra["y_a"] = y_a0 + terra["vy_a"] * passo["dt"]
-            marte["y_b"] = y_b0 + marte["vy_b"] * passo["dt"]
+            terra["y_a"] = y_a0 + terra["vy_a"] * passo["dt_runge_kutta"]
+            marte["y_b"] = y_b0 + marte["vy_b"] * passo["dt_runge_kutta"]
 
-            position_list = (
-                terra["pos_a_x"],
-                terra["pos_a_y"],
-                marte["pos_b_x"],
-                marte["pos_b_y"],
-            )
-        return position_list
+        return (
+            terra["pos_a_x"],
+            terra["pos_a_y"],
+            marte["pos_b_x"],
+            marte["pos_b_y"],
+        )
 
     def euler_method(self) -> None:
         pass

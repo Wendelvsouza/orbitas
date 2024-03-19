@@ -5,6 +5,7 @@ class Plot:
 
     def graph_force_grav(
         self,
+        name,
         terra_x,
         terra_y,
         marte_x,
@@ -16,4 +17,4 @@ class Plot:
         plt.xlabel("Posição(x em metros)")
         plt.ylabel("Posição(y em metros)")
         plt.legend()
-        plt.savefig("test.jpeg")
+        plt.savefig(f"method_{name}_orbit_plot.jpeg")
